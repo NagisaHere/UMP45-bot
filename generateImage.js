@@ -1,9 +1,9 @@
 const Canvas = require("canvas")
 const Discord = require("discord.js")
-const background = "https://i.imgur.com/CBjOjqIh.jpg"
+const background = "https://i.imgur.com/zvWTUVu.jpg"
 
 const dim = {
-    height: 670,
+    height: 675,
     width: 1200,
     margin: 50
 }
@@ -28,8 +28,8 @@ const generateImage = async (member) => {
      
      // draws black tinted box
      ctx.fillStyle = "rgba(0,0,0,0.8)"
-     ctx.fillRect(dim.margin, dim.margin, 920, 470)
-
+     ctx.fillRect(dim.margin, dim.margin, dim.width - 2 * dim.margin, dim.height - 2 * dim.margin)
+     
      const avimg = await Canvas.loadImage(avatarURL)
      ctx.save()
 
@@ -51,7 +51,7 @@ const generateImage = async (member) => {
 
     // draw in username
     ctx.font = "60px Roboto"
-    ctx.fillText(username + discrim, dim.width/2, dim.height - dim.margin - 125)
+    ctx.fillText(username + "#" + discrim, dim.width/2, dim.height - dim.margin - 125)
 
     // draw in to the server
     ctx.font = "40px Roboto"
